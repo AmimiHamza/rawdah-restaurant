@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import { MapPin, Mail, Instagram, Share2 } from 'lucide-react';
+import { MapPin, Mail, Camera, Share2 } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
 
 export default function Footer() {
@@ -27,7 +27,7 @@ export default function Footer() {
               {locale === 'ar' ? 'نبني مواقع المطاعم الراقية في السعودية والخليج.' : 'Building luxury restaurant websites across Saudi Arabia & GCC.'}
             </p>
             <div style={{ display: 'flex', gap: 10, flexDirection: isRTL ? 'row-reverse' : 'row' }}>
-              {[{ icon: <Instagram size={15} />, label: 'Instagram' }, { icon: <Share2 size={15} />, label: 'X' }].map(({ icon, label }) => (
+              {[{ icon: <Camera size={15} />, label: 'Instagram' }, { icon: <Share2 size={15} />, label: 'X' }].map(({ icon, label }) => (
                 <a key={label} href="#" aria-label={label} style={{ width: 36, height: 36, border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-3)', textDecoration: 'none', borderRadius: 4, transition: 'all 0.3s ease' }}
                   onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--gold)'; e.currentTarget.style.color = 'var(--gold)'; }}
                   onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-3)'; }}>
