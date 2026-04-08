@@ -55,14 +55,11 @@ export default function Navigation() {
 
   return (
     <>
-      <motion.nav
-        initial={{ y: -70, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      <nav
         style={{
           position: 'fixed', top: 0, left: 0, right: 0, zIndex: 900,
           padding: scrolled ? '10px 0' : '18px 0',
-          background: 'var(--nav-bg)',       // always solid — prevents mobile ghost
+          background: 'var(--nav-bg)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
           borderBottom: '1px solid var(--border)',
@@ -130,7 +127,7 @@ export default function Navigation() {
             </button>
           </div>
         </div>
-      </motion.nav>
+      </nav>
 
       {/* ── Mobile drawer ── */}
       <AnimatePresence>
