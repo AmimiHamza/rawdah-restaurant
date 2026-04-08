@@ -1,5 +1,5 @@
 'use client';
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 export type Locale = 'en' | 'ar';
 
@@ -204,11 +204,16 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   const t = translations[locale];
   const isRTL = locale === 'ar';
 
+  // Apply dir/lang to the root <html> element — no wrapper div needed,
+  // which prevents the layout-shift / nav-flicker bug on mobile.
+  useEffect(() => {
+    document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+    document.documentElement.setAttribute('lang', locale);
+  }, [isRTL, locale]);
+
   return (
     <I18nContext.Provider value={{ locale, setLocale, t, isRTL }}>
-      <div dir={isRTL ? 'rtl' : 'ltr'} lang={locale}>
-        {children}
-      </div>
+      {children}
     </I18nContext.Provider>
   );
 }

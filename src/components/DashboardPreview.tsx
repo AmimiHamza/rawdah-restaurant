@@ -180,9 +180,11 @@ export default function DashboardPreview() {
               <div style={{
                 display: 'flex',
                 alignItems: 'flex-end',
-                gap: '6px',
+                gap: '4px',
                 height: '90px',
                 flexDirection: isRTL ? 'row-reverse' : 'row',
+                overflowX: 'auto',
+                paddingBottom: '2px',
               }}>
                 {monthlyData.map((d, i) => {
                   const height = (d.value / maxVal) * 90;
@@ -205,7 +207,7 @@ export default function DashboardPreview() {
                         }}
                         title={`${d.value.toLocaleString()} SAR`}
                       />
-                      <span style={{ fontFamily: "'Montserrat'", fontSize: '7px', color: 'rgba(248,248,248,0.3)', letterSpacing: '0.05em', whiteSpace: 'nowrap' }}>
+                      <span className="chart-label" style={{ fontFamily: "'Montserrat'", fontSize: '7px', color: 'rgba(248,248,248,0.3)', letterSpacing: '0.04em', whiteSpace: 'nowrap' }}>
                         {isRTL ? d.ar.slice(0, 3) : d.en.slice(0, 3)}
                       </span>
                     </div>
@@ -215,7 +217,7 @@ export default function DashboardPreview() {
             </motion.div>
 
             {/* KPI cards row */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '14px' }}>
+            <div className="kpi-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '14px' }}>
               {stats.map((s, i) => (
                 <motion.div
                   key={i}
@@ -299,9 +301,16 @@ export default function DashboardPreview() {
 
       <style>{`
         @media (max-width: 700px) {
-          #dashboard .kpi-grid {
+          .kpi-grid {
             grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
           }
+          .kpi-grid > div {
+            padding: 14px 10px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .chart-label { display: none; }
         }
       `}</style>
     </section>

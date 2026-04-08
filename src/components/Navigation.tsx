@@ -61,12 +61,12 @@ export default function Navigation() {
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         style={{
           position: 'fixed', top: 0, left: 0, right: 0, zIndex: 900,
-          padding: scrolled ? '10px 0' : '20px 0',
-          background: scrolled ? 'var(--nav-bg)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(20px)' : 'none',
-          WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
-          borderBottom: scrolled ? '1px solid var(--border)' : 'none',
-          transition: 'all 0.4s ease',
+          padding: scrolled ? '10px 0' : '18px 0',
+          background: 'var(--nav-bg)',       // always solid — prevents mobile ghost
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          borderBottom: '1px solid var(--border)',
+          transition: 'padding 0.35s ease',
         }}
       >
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexDirection: isRTL ? 'row-reverse' : 'row' }}>
