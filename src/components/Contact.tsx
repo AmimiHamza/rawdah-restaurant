@@ -6,31 +6,33 @@ import { useI18n } from '@/lib/i18n';
 
 const services = {
   en: [
-    'Private Dining / Event Booking',
-    'Corporate Event',
-    'Wedding & Celebration',
-    'Media / Press Inquiry',
-    'Catering Partnership',
-    'General Inquiry',
+    'Luxury Restaurant Website',
+    'Admin Dashboard & Analytics',
+    'Online Reservation System',
+    'Online Ordering & Payments',
+    'Bilingual EN/AR Setup',
+    'Full Package (Website + Dashboard)',
+    'Consultation',
   ],
   ar: [
-    'حجز غرفة خاصة / فعالية',
-    'فعالية شركات',
-    'حفل زفاف أو احتفال',
-    'استفسار إعلامي / صحفي',
-    'شراكة تموين',
-    'استفسار عام',
+    'موقع مطعم احترافي',
+    'لوحة تحكم وتحليلات',
+    'نظام حجوزات إلكتروني',
+    'طلب أونلاين ودفع إلكتروني',
+    'إعداد ثنائي اللغة عربي/إنجليزي',
+    'الباقة الكاملة (موقع + لوحة تحكم)',
+    'استشارة',
   ],
 };
 
 const infoCards = {
   en: [
-    { icon: <Mail size={18} />, label: 'Email', value: 'concierge@rawdah.sa' },
+    { icon: <Mail size={18} />, label: 'Email', value: 'hamza.amimi.p@gmail.com' },
     { icon: <Clock size={18} />, label: 'Response Time', value: 'Within 24 hours' },
     { icon: <Globe size={18} />, label: 'We serve', value: 'Saudi Arabia & GCC' },
   ],
   ar: [
-    { icon: <Mail size={18} />, label: 'البريد', value: 'concierge@rawdah.sa' },
+    { icon: <Mail size={18} />, label: 'البريد', value: 'hamza.amimi.p@gmail.com' },
     { icon: <Clock size={18} />, label: 'وقت الرد', value: 'خلال ٢٤ ساعة' },
     { icon: <Globe size={18} />, label: 'نخدم', value: 'السعودية والخليج' },
   ],
@@ -89,10 +91,10 @@ export default function Contact() {
           style={{ textAlign: 'center', marginBottom: '72px' }}
         >
           <span style={{ fontFamily: "'Montserrat'", fontSize: '10px', fontWeight: 600, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#D4AF37', display: 'block', marginBottom: '16px' }}>
-            {isRTL ? 'تواصل معنا' : 'Get In Touch'}
+            {isRTL ? 'ابدأ مشروعك' : 'Start Your Project'}
           </span>
           <h2 style={{ fontFamily: "'Cormorant Garamond'", fontSize: 'clamp(36px, 4vw, 56px)', fontWeight: 400, color: '#F8F8F8' }}>
-            {isRTL ? 'كيف يمكننا مساعدتك؟' : 'How Can We Serve You?'}
+            {isRTL ? 'اطلب خدمتك الآن' : 'Request a Service'}
           </h2>
           <div className="gold-divider" style={{ marginTop: '20px' }} />
         </motion.div>
@@ -182,8 +184,8 @@ export default function Contact() {
                 marginBottom: '16px',
               }}>
                 {isRTL
-                  ? '"نبني تجارب لا تُنسى، وكل سؤالك هو بداية قصة."'
-                  : '"Every inquiry is the beginning of an unforgettable experience."'}
+                  ? '"نبني تجارب رقمية تحكي قصصاً حقيقية."'
+                  : '"We build digital experiences that tell real stories."'}
               </p>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexDirection: isRTL ? 'row-reverse' : 'row' }}>
                 <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#D4AF37', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Cormorant Garamond'", fontSize: '14px', fontWeight: 600, color: '#121212' }}>
@@ -191,10 +193,10 @@ export default function Contact() {
                 </div>
                 <div>
                   <div style={{ fontFamily: "'Montserrat'", fontSize: '11px', fontWeight: 600, color: '#F8F8F8' }}>
-                    {isRTL ? 'فريق روضة' : 'Rawdah Team'}
+                    {isRTL ? 'حمزة أميمي' : 'Hamza Amimi'}
                   </div>
                   <div style={{ fontFamily: "'Montserrat'", fontSize: '10px', fontWeight: 300, color: 'rgba(248,248,248,0.4)' }}>
-                    {isRTL ? 'الكونسيرج والضيافة' : 'Concierge & Hospitality'}
+                    {isRTL ? 'مطور ومصمم مواقع' : 'Web Developer & Designer'}
                   </div>
                 </div>
               </div>

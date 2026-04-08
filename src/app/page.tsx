@@ -5,6 +5,7 @@ import Menu from '@/components/Menu';
 import Reservation from '@/components/Reservation';
 import OnlineOrder from '@/components/OnlineOrder';
 import PrivateDining from '@/components/PrivateDining';
+import DashboardPreview from '@/components/DashboardPreview';
 import Contact from '@/components/Contact';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import Footer from '@/components/Footer';
@@ -20,6 +21,7 @@ export default function Home() {
         <Reservation />
         <OnlineOrder />
         <PrivateDining />
+        <DashboardPreview />
         <Contact />
       </main>
       <Footer />
