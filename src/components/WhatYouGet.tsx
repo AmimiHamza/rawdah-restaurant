@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Check, ArrowRight, ArrowLeft, Eye } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
 
 interface Feature {
@@ -162,12 +162,22 @@ export default function WhatYouGet() {
               </div>
               {/* CTA */}
               <div style={{ padding: '16px 24px 24px' }}>
+                <button
+                  onClick={() => {
+                    const ids = Array.from(selected).join(',');
+                    window.location.href = `/preview?f=${ids}`;
+                  }}
+                  className="btn-gold-solid"
+                  style={{ width: '100%', justifyContent: 'center', display: 'flex', gap: 8, marginBottom: 10, borderRadius: 6 }}
+                >
+                  <Eye size={14} /> {locale === 'ar' ? 'معاينة حزمتك' : 'Preview My Package'}
+                </button>
                 <a
-                  href={`https://wa.me/966000000000?text=${buildContactMessage()}`}
+                  href={`https://wa.me/212643626334?text=${buildContactMessage()}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-gold-solid"
-                  style={{ width: '100%', justifyContent: 'center', display: 'flex', gap: 8, marginBottom: 12, borderRadius: 6 }}
+                  className="btn-gold"
+                  style={{ width: '100%', justifyContent: 'center', display: 'flex', gap: 8, marginBottom: 10, borderRadius: 6, textDecoration: 'none' }}
                 >
                   💬 {locale === 'ar' ? 'أرسل عبر واتساب' : 'Send via WhatsApp'}
                 </a>
