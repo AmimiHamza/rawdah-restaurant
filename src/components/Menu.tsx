@@ -36,11 +36,15 @@ function DishModal({ dish, onClose, t, isRTL }: {
         }}
       >
         {/* Image */}
-        <div style={{ position: 'relative', height: '280px', overflow: 'hidden' }}>
+        <div style={{ position: 'relative', height: '280px', overflow: 'hidden', background: 'linear-gradient(135deg, #1A1410 0%, #2C2010 50%, #1A1410 100%)' }}>
+          <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <span style={{ fontFamily: "'Cormorant Garamond'", fontSize: '80px', fontWeight: 300, color: 'rgba(212,175,55,0.1)' }}>✦</span>
+          </div>
           <img
             src={dish.image}
             alt={isRTL ? dish.nameAr : dish.nameEn}
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+            onError={(e) => { e.currentTarget.style.opacity = '0'; }}
           />
           <div style={{
             position: 'absolute',
@@ -154,11 +158,15 @@ function DishCard({ dish, onClick, isRTL }: { dish: MenuItem; onClick: () => voi
       }}
     >
       {/* Image */}
-      <div style={{ height: '200px', overflow: 'hidden' }}>
+      <div style={{ height: '200px', overflow: 'hidden', position: 'relative', background: 'linear-gradient(135deg, #1A1410 0%, #2C2010 50%, #1A1410 100%)' }}>
+        <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <span style={{ fontFamily: "'Cormorant Garamond'", fontSize: '56px', fontWeight: 300, color: 'rgba(212,175,55,0.12)', letterSpacing: '0.1em' }}>✦</span>
+        </div>
         <img
           src={dish.image}
           alt={dish.nameEn}
-          style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }}
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }}
+          onError={(e) => { e.currentTarget.style.opacity = '0'; }}
           onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.05)'; }}
           onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
         />
