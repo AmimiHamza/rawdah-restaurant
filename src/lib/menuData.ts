@@ -115,7 +115,7 @@ export const menuItems: MenuItem[] = [
     calories: 620,
     category: 'Mains',
     allergens: ['Dairy', 'Poultry'],
-    image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c3?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1604908177453-7462950a8a3b?w=800&q=80',
   },
   // ─── DESSERTS ───
   {

@@ -4,7 +4,7 @@ import { motion, useInView } from 'framer-motion';
 import { useI18n } from '@/lib/i18n';
 
 const ingredients = [
-  { label: 'Al-Ahsa Dates', labelAr: 'تمور الأحساء', src: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&q=70' },
+  { label: 'Al-Ahsa Dates', labelAr: 'تمور الأحساء', src: 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=400&q=70' },
   { label: 'Red Sea Hammour', labelAr: 'هامور البحر الأحمر', src: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400&q=70' },
   { label: 'Qatif Saffron', labelAr: 'زعفران القطيف', src: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&q=70' },
   { label: 'Asir Herbs', labelAr: 'أعشاب عسير', src: 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=400&q=70' },
