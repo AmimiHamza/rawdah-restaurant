@@ -1,31 +1,29 @@
-import Navigation from '@/components/Navigation';
-import Hero from '@/components/Hero';
-import Narrative from '@/components/Narrative';
-import Menu from '@/components/Menu';
-import Reservation from '@/components/Reservation';
-import OnlineOrder from '@/components/OnlineOrder';
-import PrivateDining from '@/components/PrivateDining';
+import Navigation      from '@/components/Navigation';
+import HeroOwner       from '@/components/HeroOwner';
+import StatsBar        from '@/components/StatsBar';
+import WhatYouGet      from '@/components/WhatYouGet';
 import DashboardPreview from '@/components/DashboardPreview';
-import Contact from '@/components/Contact';
-import WhatsAppButton from '@/components/WhatsAppButton';
-import Footer from '@/components/Footer';
+import Contact         from '@/components/Contact';
+import Footer          from '@/components/Footer';
+import WhatsAppButton  from '@/components/WhatsAppButton';
+import ScrollProgress  from '@/components/ScrollProgress';
+import BackToTop       from '@/components/BackToTop';
 
 export default function Home() {
   return (
     <>
+      <ScrollProgress />
       <Navigation />
       <main>
-        <Hero />
-        <Narrative />
-        <Menu />
-        <Reservation />
-        <OnlineOrder />
-        <PrivateDining />
+        <HeroOwner />
+        <StatsBar />
+        <WhatYouGet />
         <DashboardPreview />
         <Contact />
       </main>
       <Footer />
       <WhatsAppButton />
+      <BackToTop />
     </>
   );
 }

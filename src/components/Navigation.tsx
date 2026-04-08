@@ -1,275 +1,192 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X, Globe, Sun, Moon } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
+import { useTheme } from '@/lib/theme';
 
 const navLinks = [
-  { key: 'story',        href: '#story' },
-  { key: 'menu',         href: '#menu' },
-  { key: 'reservations', href: '#reservations' },
-  { key: 'order',        href: '#order' },
-  { key: 'privateDining',href: '#private-dining' },
+  { key: 'features', href: '#features' },
+  { key: 'dashboard', href: '#dashboard' },
+  { key: 'contact',  href: '#contact' },
 ] as const;
 
+const navLabels = {
+  en: { features: 'What You Get', dashboard: 'Dashboard', contact: 'Contact' },
+  ar: { features: 'ما ستحصل عليه', dashboard: 'لوحة التحكم', contact: 'تواصل معنا' },
+};
+
 export default function Navigation() {
-  const { t, locale, setLocale, isRTL } = useI18n();
+  const { locale, setLocale, isRTL } = useI18n();
+  const { toggleTheme, isDark } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    const fn = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', fn, { passive: true });
+    return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  const toggleLocale = () => setLocale(locale === 'en' ? 'ar' : 'en');
+  // Close menu on resize to desktop
+  useEffect(() => {
+    const fn = () => { if (window.innerWidth >= 1025) setOpen(false); };
+    window.addEventListener('resize', fn);
+    return () => window.removeEventListener('resize', fn);
+  }, []);
+
+  const labels = navLabels[locale];
+  const scrollTo = (href: string) => {
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    setOpen(false);
+  };
+
+  const iconBtn: React.CSSProperties = {
+    background: 'transparent',
+    border: '1px solid var(--border)',
+    color: 'var(--text-2)',
+    width: 36, height: 36,
+    borderRadius: '50%',
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    cursor: 'pointer',
+    transition: 'all 0.25s ease',
+    flexShrink: 0,
+  };
 
   return (
     <>
       <motion.nav
-        initial={{ y: -80, opacity: 0 }}
+        initial={{ y: -70, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 900,
-          padding: scrolled ? '12px 0' : '24px 0',
-          background: scrolled
-            ? 'rgba(18,18,18,0.95)'
-            : 'linear-gradient(to bottom, rgba(0,0,0,0.7), transparent)',
+          position: 'fixed', top: 0, left: 0, right: 0, zIndex: 900,
+          padding: scrolled ? '10px 0' : '20px 0',
+          background: scrolled ? 'var(--nav-bg)' : 'transparent',
           backdropFilter: scrolled ? 'blur(20px)' : 'none',
-          borderBottom: scrolled ? '1px solid rgba(212,175,55,0.12)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
+          borderBottom: scrolled ? '1px solid var(--border)' : 'none',
           transition: 'all 0.4s ease',
         }}
       >
-        <div
-          style={{
-            maxWidth: '1400px',
-            margin: '0 auto',
-            padding: '0 40px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexDirection: isRTL ? 'row-reverse' : 'row',
-          }}
-        >
-          {/* Logo */}
-          <a
-            href="#"
-            style={{ textDecoration: 'none' }}
-            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          >
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: isRTL ? 'flex-end' : 'flex-start' }}>
-              <span
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: '28px',
-                  fontWeight: 400,
-                  color: '#F8F8F8',
-                  letterSpacing: '0.08em',
-                  lineHeight: 1,
-                }}
-              >
-                RAWDAH
+        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexDirection: isRTL ? 'row-reverse' : 'row' }}>
+
+          {/* ── Logo ── */}
+          <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: isRTL ? 'flex-end' : 'flex-start', gap: '1px' }}>
+              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 400, color: 'var(--text)', letterSpacing: '0.1em', lineHeight: 1 }}>
+                AMIMI
               </span>
-              <span
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: '11px',
-                  color: '#D4AF37',
-                  letterSpacing: '0.3em',
-                  textTransform: 'uppercase',
-                  marginTop: '3px',
-                }}
-              >
-                روضة
+              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 12, color: 'var(--gold)', letterSpacing: '0.25em', lineHeight: 1 }}>
+                عميمي · Digital
               </span>
             </div>
-          </a>
+          </button>
 
-          {/* Desktop Links */}
-          <div
-            className="desktop-nav"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '40px',
-              flexDirection: isRTL ? 'row-reverse' : 'row',
-            }}
-          >
+          {/* ── Desktop links ── */}
+          <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: 36, flexDirection: isRTL ? 'row-reverse' : 'row' }}>
             {navLinks.map(({ key, href }) => (
-              <a
+              <button
                 key={key}
-                href={href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                style={{
-                  fontFamily: "'Montserrat', sans-serif",
-                  fontSize: '10px',
-                  fontWeight: 600,
-                  letterSpacing: '0.2em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(248,248,248,0.75)',
-                  textDecoration: 'none',
-                  transition: 'color 0.3s ease',
-                  position: 'relative',
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = '#D4AF37')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(248,248,248,0.75)')}
+                onClick={() => scrollTo(href)}
+                style={{ background: 'none', border: 'none', fontFamily: "'Montserrat'", fontSize: 10, fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-2)', cursor: 'pointer', transition: 'color 0.25s ease' }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--gold)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-2)'; }}
               >
-                {t.nav[key as keyof typeof t.nav]}
-              </a>
+                {labels[key]}
+              </button>
             ))}
+
+            {/* Theme toggle */}
+            <button onClick={toggleTheme} style={iconBtn} title="Toggle theme"
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--gold)'; e.currentTarget.style.color = 'var(--gold)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-2)'; }}>
+              {isDark ? <Sun size={14} /> : <Moon size={14} />}
+            </button>
 
             {/* Language toggle */}
             <button
-              onClick={toggleLocale}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                background: 'transparent',
-                border: '1px solid rgba(212,175,55,0.4)',
-                color: '#D4AF37',
-                padding: '6px 14px',
-                fontFamily: "'Montserrat', sans-serif",
-                fontSize: '10px',
-                fontWeight: 600,
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                cursor: 'pointer',
-                borderRadius: '2px',
-                transition: 'all 0.3s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(212,175,55,0.1)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'transparent';
-              }}
+              onClick={() => setLocale(locale === 'en' ? 'ar' : 'en')}
+              style={{ ...iconBtn, gap: 4, width: 'auto', padding: '0 12px', borderRadius: 20, fontSize: 10, fontWeight: 600, letterSpacing: '0.12em', fontFamily: "'Montserrat'" }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--gold)'; e.currentTarget.style.color = 'var(--gold)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-2)'; }}
             >
-              <Globe size={12} />
+              <Globe size={11} />
               {locale === 'en' ? 'عربي' : 'EN'}
             </button>
 
-            <a
-              href="#reservations"
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector('#reservations')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="btn-gold"
-              style={{ fontSize: '10px', padding: '10px 24px', textDecoration: 'none' }}
-            >
-              {t.nav.reservations}
-            </a>
+            <button onClick={() => scrollTo('#contact')} className="btn-gold-solid" style={{ fontSize: 10, padding: '10px 22px', letterSpacing: '0.15em' }}>
+              {locale === 'en' ? 'Start Now' : 'ابدأ الآن'}
+            </button>
           </div>
 
-          {/* Mobile hamburger */}
-          <button
-            className="mobile-menu-btn"
-            onClick={() => setOpen(!open)}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              color: '#F8F8F8',
-              cursor: 'pointer',
-              display: 'none',
-            }}
-          >
-            {open ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* ── Mobile right controls ── */}
+          <div className="mobile-only" style={{ display: 'flex', alignItems: 'center', gap: 10, flexDirection: isRTL ? 'row-reverse' : 'row' }}>
+            <button onClick={toggleTheme} style={iconBtn}>
+              {isDark ? <Sun size={14} /> : <Moon size={14} />}
+            </button>
+            <button onClick={() => setOpen(!open)} style={{ ...iconBtn, borderColor: open ? 'var(--gold)' : 'var(--border)', color: open ? 'var(--gold)' : 'var(--text)' }}>
+              {open ? <X size={16} /> : <Menu size={16} />}
+            </button>
+          </div>
         </div>
       </motion.nav>
 
-      {/* Mobile menu */}
+      {/* ── Mobile drawer ── */}
       <AnimatePresence>
         {open && (
-          <motion.div
-            initial={{ opacity: 0, x: isRTL ? -100 : 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: isRTL ? -100 : 100 }}
-            transition={{ duration: 0.35, ease: 'easeOut' }}
-            style={{
-              position: 'fixed',
-              top: 0,
-              [isRTL ? 'left' : 'right']: 0,
-              width: '80vw',
-              maxWidth: '360px',
-              height: '100vh',
-              background: 'rgba(18,18,18,0.98)',
-              backdropFilter: 'blur(20px)',
-              zIndex: 800,
-              display: 'flex',
-              flexDirection: 'column',
-              padding: '100px 40px 40px',
-              gap: '32px',
-              borderLeft: isRTL ? 'none' : '1px solid rgba(212,175,55,0.15)',
-              borderRight: isRTL ? '1px solid rgba(212,175,55,0.15)' : 'none',
-            }}
-          >
-            {navLinks.map(({ key, href }, i) => (
-              <motion.a
-                key={key}
-                href={href}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.07 }}
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-                  setOpen(false);
-                }}
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: '28px',
-                  fontWeight: 400,
-                  color: '#F8F8F8',
-                  textDecoration: 'none',
-                  letterSpacing: '0.04em',
-                  transition: 'color 0.3s ease',
-                  textAlign: isRTL ? 'right' : 'left',
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = '#D4AF37')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = '#F8F8F8')}
-              >
-                {t.nav[key as keyof typeof t.nav]}
-              </motion.a>
-            ))}
-            <button
-              onClick={() => { toggleLocale(); setOpen(false); }}
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              onClick={() => setOpen(false)}
+              style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 850, backdropFilter: 'blur(4px)' }}
+            />
+            {/* Drawer */}
+            <motion.div
+              initial={{ opacity: 0, y: -16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
               style={{
-                background: 'transparent',
-                border: '1px solid rgba(212,175,55,0.4)',
-                color: '#D4AF37',
-                padding: '12px 20px',
-                fontFamily: "'Montserrat', sans-serif",
-                fontSize: '11px',
-                fontWeight: 600,
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                cursor: 'pointer',
-                alignSelf: isRTL ? 'flex-end' : 'flex-start',
+                position: 'fixed', top: 0, left: 0, right: 0, zIndex: 860,
+                background: 'var(--bg-card)', borderBottom: '1px solid var(--border)',
+                padding: '80px 28px 36px', direction: isRTL ? 'rtl' : 'ltr',
+                boxShadow: 'var(--shadow)',
               }}
             >
-              {locale === 'en' ? 'العربية' : 'English'}
-            </button>
-          </motion.div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                {navLinks.map(({ key, href }, i) => (
+                  <motion.button
+                    key={key}
+                    initial={{ opacity: 0, x: isRTL ? 12 : -12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.06 }}
+                    onClick={() => scrollTo(href)}
+                    style={{ background: 'none', border: 'none', fontFamily: "'Cormorant Garamond'", fontSize: 28, fontWeight: 400, color: 'var(--text)', cursor: 'pointer', padding: '10px 0', textAlign: isRTL ? 'right' : 'left', borderBottom: '1px solid var(--border)', transition: 'color 0.25s ease' }}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--gold)'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text)'; }}
+                  >
+                    {labels[key]}
+                  </motion.button>
+                ))}
+                <div style={{ display: 'flex', gap: 12, marginTop: 20, flexDirection: isRTL ? 'row-reverse' : 'row', flexWrap: 'wrap' }}>
+                  <button
+                    onClick={() => { setLocale(locale === 'en' ? 'ar' : 'en'); setOpen(false); }}
+                    className="btn-gold"
+                    style={{ fontSize: 10, padding: '10px 20px' }}
+                  >
+                    <Globe size={11} /> {locale === 'en' ? 'العربية' : 'English'}
+                  </button>
+                  <button onClick={() => scrollTo('#contact')} className="btn-gold-solid" style={{ fontSize: 10, padding: '10px 20px', flex: 1, justifyContent: 'center' }}>
+                    {locale === 'en' ? 'Start Now' : 'ابدأ الآن'}
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
-
-      <style>{`
-        @media (max-width: 1024px) {
-          .desktop-nav { display: none !important; }
-          .mobile-menu-btn { display: block !important; }
-        }
-      `}</style>
     </>
   );
 }

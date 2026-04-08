@@ -4,9 +4,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
 
-const WHATSAPP_NUMBER = '966110000000'; // Replace with actual number
-const WHATSAPP_MESSAGE = encodeURIComponent('Hello Rawdah, I would like to make a reservation.');
-const WHATSAPP_MESSAGE_AR = encodeURIComponent('مرحباً روضة، أرغب في إجراء حجز.');
+const WHATSAPP_NUMBER = '212600000000'; // Replace with your actual number
+const WHATSAPP_MESSAGE = encodeURIComponent('Hello Amimi Digital, I would like to discuss a restaurant website.');
+const WHATSAPP_MESSAGE_AR = encodeURIComponent('مرحباً عميمي ديجيتال، أرغب في مناقشة موقع لمطعمي.');
 
 export default function WhatsAppButton() {
   const { isRTL, t } = useI18n();

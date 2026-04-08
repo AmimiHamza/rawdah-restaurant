@@ -1,194 +1,103 @@
 'use client';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Clock, Share2, X as XIcon } from 'lucide-react';
+import { MapPin, Mail, Instagram, Share2 } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
 
 export default function Footer() {
-  const { t, isRTL } = useI18n();
+  const { isRTL, locale } = useI18n();
+
+  const nav = [
+    { labelEn: 'What You Get', labelAr: 'ما ستحصل عليه', href: '#features' },
+    { labelEn: 'Dashboard',    labelAr: 'لوحة التحكم',   href: '#dashboard' },
+    { labelEn: 'Contact',      labelAr: 'تواصل معنا',    href: '#contact' },
+  ];
 
   return (
-    <footer
-      style={{
-        background: '#0A0A0A',
-        borderTop: '1px solid rgba(212,175,55,0.12)',
-        padding: '80px 0 40px',
-        direction: isRTL ? 'rtl' : 'ltr',
-      }}
-    >
-      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 40px' }}>
-        {/* Top row */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-            gap: '48px',
-            marginBottom: '64px',
-          }}
-        >
+    <footer style={{ background: 'var(--bg-2)', borderTop: '1px solid var(--border)', padding: '72px 0 36px', direction: isRTL ? 'rtl' : 'ltr' }}>
+      <div className="container">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 48, marginBottom: 56 }}>
+
           {/* Brand */}
           <div>
-            <div style={{ marginBottom: '20px' }}>
-              <div style={{ fontFamily: "'Cormorant Garamond'", fontSize: '36px', fontWeight: 400, color: '#F8F8F8', letterSpacing: '0.06em' }}>
-                RAWDAH
-              </div>
-              <div style={{ fontFamily: "'Cormorant Garamond'", fontSize: '14px', color: '#D4AF37', letterSpacing: '0.2em' }}>
-                روضة
-              </div>
+            <div style={{ marginBottom: 16 }}>
+              <div style={{ fontFamily: "'Cormorant Garamond'", fontSize: 32, fontWeight: 400, color: 'var(--text)', letterSpacing: '0.08em', lineHeight: 1 }}>AMIMI</div>
+              <div style={{ fontFamily: "'Cormorant Garamond'", fontSize: 14, color: 'var(--gold)', letterSpacing: '0.22em', marginTop: 3 }}>عميمي · Digital</div>
             </div>
-            <p style={{ fontFamily: "'Montserrat'", fontSize: '12px', fontWeight: 300, color: 'rgba(248,248,248,0.45)', lineHeight: 1.8 }}>
-              {t.footer.tagline}
+            <p style={{ fontFamily: "'Montserrat'", fontSize: 12, fontWeight: 300, color: 'var(--text-2)', lineHeight: 1.8, marginBottom: 20, textAlign: isRTL ? 'right' : 'left' }}>
+              {locale === 'ar' ? 'نبني مواقع المطاعم الراقية في السعودية والخليج.' : 'Building luxury restaurant websites across Saudi Arabia & GCC.'}
             </p>
-            {/* Social */}
-            <div style={{ display: 'flex', gap: '14px', marginTop: '24px', flexDirection: isRTL ? 'row-reverse' : 'row' }}>
-              {[
-                { icon: <Share2 size={16} />, label: 'Instagram' },
-                { icon: <XIcon size={16} />, label: 'Twitter / X' },
-              ].map(({ icon, label }) => (
-                <a
-                  key={label}
-                  href="#"
-                  aria-label={label}
-                  style={{
-                    width: '38px',
-                    height: '38px',
-                    border: '1px solid rgba(212,175,55,0.25)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'rgba(248,248,248,0.5)',
-                    textDecoration: 'none',
-                    transition: 'all 0.3s ease',
-                    borderRadius: '2px',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = '#D4AF37';
-                    e.currentTarget.style.color = '#D4AF37';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(212,175,55,0.25)';
-                    e.currentTarget.style.color = 'rgba(248,248,248,0.5)';
-                  }}
-                >
+            <div style={{ display: 'flex', gap: 10, flexDirection: isRTL ? 'row-reverse' : 'row' }}>
+              {[{ icon: <Instagram size={15} />, label: 'Instagram' }, { icon: <Share2 size={15} />, label: 'X' }].map(({ icon, label }) => (
+                <a key={label} href="#" aria-label={label} style={{ width: 36, height: 36, border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-3)', textDecoration: 'none', borderRadius: 4, transition: 'all 0.3s ease' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--gold)'; e.currentTarget.style.color = 'var(--gold)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-3)'; }}>
                   {icon}
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Contact */}
+          {/* Navigation */}
           <div>
-            <h4 style={{ fontFamily: "'Montserrat'", fontSize: '10px', fontWeight: 600, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#D4AF37', marginBottom: '24px' }}>
-              {isRTL ? 'تواصل معنا' : 'Contact'}
+            <h4 style={{ fontFamily: "'Montserrat'", fontSize: 10, fontWeight: 600, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 20 }}>
+              {locale === 'ar' ? 'الأقسام' : 'Navigate'}
             </h4>
-            {[
-              { icon: <MapPin size={13} />, text: t.footer.address },
-              { icon: <Phone size={13} />, text: t.footer.phone },
-              { icon: <Clock size={13} />, text: t.footer.hours },
-            ].map(({ icon, text }, i) => (
-              <div
-                key={i}
-                style={{
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: '10px',
-                  marginBottom: '14px',
-                  flexDirection: isRTL ? 'row-reverse' : 'row',
-                }}
-              >
-                <span style={{ color: '#D4AF37', marginTop: '2px', flexShrink: 0 }}>{icon}</span>
-                <span style={{ fontFamily: "'Montserrat'", fontSize: '12px', fontWeight: 300, color: 'rgba(248,248,248,0.55)', lineHeight: 1.6, textAlign: isRTL ? 'right' : 'left' }}>
-                  {text}
-                </span>
+            {nav.map(({ labelEn, labelAr, href }) => (
+              <div key={href} style={{ marginBottom: 10 }}>
+                <a href={href} onClick={(e) => { e.preventDefault(); document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' }); }}
+                  style={{ fontFamily: "'Montserrat'", fontSize: 13, fontWeight: 300, color: 'var(--text-2)', textDecoration: 'none', transition: 'color 0.25s ease', display: 'block', textAlign: isRTL ? 'right' : 'left' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--gold)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-2)'; }}>
+                  {locale === 'ar' ? labelAr : labelEn}
+                </a>
               </div>
             ))}
           </div>
 
-          {/* Quick Links */}
+          {/* Contact */}
           <div>
-            <h4 style={{ fontFamily: "'Montserrat'", fontSize: '10px', fontWeight: 600, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#D4AF37', marginBottom: '24px' }}>
-              {isRTL ? 'روابط سريعة' : 'Navigate'}
+            <h4 style={{ fontFamily: "'Montserrat'", fontSize: 10, fontWeight: 600, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 20 }}>
+              {locale === 'ar' ? 'تواصل' : 'Contact'}
             </h4>
             {[
-              { label: t.nav.story, href: '#story' },
-              { label: t.nav.menu, href: '#menu' },
-              { label: t.nav.reservations, href: '#reservations' },
-              { label: t.nav.order, href: '#order' },
-              { label: t.nav.privateDining, href: '#private-dining' },
-            ].map(({ label, href }) => (
-              <div key={href} style={{ marginBottom: '10px', textAlign: isRTL ? 'right' : 'left' }}>
-                <a
-                  href={href}
-                  onClick={(e) => { e.preventDefault(); document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' }); }}
-                  style={{
-                    fontFamily: "'Montserrat'",
-                    fontSize: '12px',
-                    fontWeight: 300,
-                    color: 'rgba(248,248,248,0.5)',
-                    textDecoration: 'none',
-                    transition: 'color 0.3s ease',
-                    letterSpacing: '0.04em',
-                  }}
-                  onMouseEnter={(e) => { e.currentTarget.style.color = '#D4AF37'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(248,248,248,0.5)'; }}
-                >
-                  {label}
-                </a>
+              { icon: <Mail size={13} />, text: 'hamza.amimi.p@gmail.com' },
+              { icon: <MapPin size={13} />, text: locale === 'ar' ? 'المملكة العربية السعودية والخليج' : 'Saudi Arabia & GCC' },
+            ].map(({ icon, text }, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 14, flexDirection: isRTL ? 'row-reverse' : 'row' }}>
+                <span style={{ color: 'var(--gold)', marginTop: 2, flexShrink: 0 }}>{icon}</span>
+                <span style={{ fontFamily: "'Montserrat'", fontSize: 12, fontWeight: 300, color: 'var(--text-2)', textAlign: isRTL ? 'right' : 'left' }}>{text}</span>
               </div>
             ))}
           </div>
 
           {/* Newsletter */}
           <div>
-            <h4 style={{ fontFamily: "'Montserrat'", fontSize: '10px', fontWeight: 600, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#D4AF37', marginBottom: '24px' }}>
-              {isRTL ? 'النشرة البريدية' : 'Newsletter'}
+            <h4 style={{ fontFamily: "'Montserrat'", fontSize: 10, fontWeight: 600, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 20 }}>
+              {locale === 'ar' ? 'النشرة البريدية' : 'Newsletter'}
             </h4>
-            <p style={{ fontFamily: "'Montserrat'", fontSize: '12px', fontWeight: 300, color: 'rgba(248,248,248,0.45)', lineHeight: 1.7, marginBottom: '16px', textAlign: isRTL ? 'right' : 'left' }}>
-              {isRTL ? 'احصل على دعوات أولوية لأمسياتنا الحصرية.' : 'Receive priority invitations to our exclusive evenings.'}
+            <p style={{ fontFamily: "'Montserrat'", fontSize: 12, fontWeight: 300, color: 'var(--text-2)', lineHeight: 1.7, marginBottom: 14, textAlign: isRTL ? 'right' : 'left' }}>
+              {locale === 'ar' ? 'نصائح وأفضل الممارسات لمطعمك رقمياً.' : 'Tips and best practices for your restaurant online.'}
             </p>
-            <div style={{ display: 'flex', gap: '0', direction: isRTL ? 'rtl' : 'ltr' }}>
-              <input
-                type="email"
-                placeholder={isRTL ? 'بريدك الإلكتروني' : 'your@email.com'}
-                className="luxury-input"
-                style={{ borderRadius: '0', flex: 1, fontSize: '12px', padding: '12px 14px' }}
-              />
-              <button
-                className="btn-gold-solid"
-                style={{ borderRadius: '0', padding: '12px 18px', flexShrink: 0, fontSize: '10px' }}
-              >
-                {isRTL ? 'اشترك' : 'Join'}
+            <div style={{ display: 'flex', direction: isRTL ? 'rtl' : 'ltr' }}>
+              <input type="email" placeholder={locale === 'ar' ? 'بريدك الإلكتروني' : 'your@email.com'} className="luxury-input" style={{ fontSize: 12, padding: '11px 14px', borderRadius: '4px 0 0 4px', borderRight: 'none' }} />
+              <button className="btn-gold-solid" style={{ padding: '11px 16px', fontSize: 10, flexShrink: 0, borderRadius: '0 4px 4px 0' }}>
+                {locale === 'ar' ? 'اشترك' : 'Join'}
               </button>
             </div>
           </div>
         </div>
 
-        {/* Divider */}
-        <div style={{ width: '100%', height: '1px', background: 'rgba(212,175,55,0.08)', marginBottom: '32px' }} />
-
-        {/* Bottom row */}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '12px',
-            flexDirection: isRTL ? 'row-reverse' : 'row',
-          }}
-        >
-          <p style={{ fontFamily: "'Montserrat'", fontSize: '11px', fontWeight: 300, color: 'rgba(248,248,248,0.3)', letterSpacing: '0.04em' }}>
-            {t.footer.rights}
+        {/* Bottom */}
+        <div style={{ borderTop: '1px solid var(--border)', paddingTop: 28, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12, flexDirection: isRTL ? 'row-reverse' : 'row' }}>
+          <p style={{ fontFamily: "'Montserrat'", fontSize: 11, fontWeight: 300, color: 'var(--text-3)' }}>
+            {locale === 'ar' ? '© ٢٠٢٥ عميمي ديجيتال · جميع الحقوق محفوظة.' : '© 2025 Amimi Digital · All rights reserved.'}
           </p>
-          <div style={{ display: 'flex', gap: '24px', flexDirection: isRTL ? 'row-reverse' : 'row' }}>
-            {[t.footer.privacy, t.footer.terms].map((label) => (
-              <a
-                key={label}
-                href="#"
-                style={{ fontFamily: "'Montserrat'", fontSize: '11px', fontWeight: 300, color: 'rgba(248,248,248,0.3)', textDecoration: 'none', transition: 'color 0.3s ease' }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = '#D4AF37'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(248,248,248,0.3)'; }}
-              >
-                {label}
+          <div style={{ display: 'flex', gap: 20, flexDirection: isRTL ? 'row-reverse' : 'row' }}>
+            {[locale === 'ar' ? 'سياسة الخصوصية' : 'Privacy Policy', locale === 'ar' ? 'شروط الخدمة' : 'Terms'].map(l => (
+              <a key={l} href="#" style={{ fontFamily: "'Montserrat'", fontSize: 11, fontWeight: 300, color: 'var(--text-3)', textDecoration: 'none', transition: 'color 0.25s ease' }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--gold)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-3)'; }}>
+                {l}
               </a>
             ))}
           </div>

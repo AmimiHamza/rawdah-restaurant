@@ -73,7 +73,7 @@ export default function DashboardPreview() {
     <section
       id="dashboard"
       ref={ref}
-      style={{ padding: '140px 0', background: '#0E0E0E', overflow: 'hidden' }}
+      style={{ padding: '120px 0', background: 'var(--bg-2)', overflow: 'hidden' }}
     >
       <div style={{ maxWidth: '1300px', margin: '0 auto', padding: '0 40px' }}>
 
@@ -104,11 +104,11 @@ export default function DashboardPreview() {
           animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           style={{
-            background: 'rgba(22,18,12,0.95)',
-            border: '1px solid rgba(212,175,55,0.2)',
+            background: 'var(--bg-card)',
+            border: '1px solid var(--border)',
             borderRadius: '12px',
             overflow: 'hidden',
-            boxShadow: '0 40px 100px rgba(0,0,0,0.6)',
+            boxShadow: 'var(--shadow)',
           }}
         >
           {/* Window chrome */}
