@@ -43,8 +43,8 @@ export default function Navigation() {
 
   const iconBtn: React.CSSProperties = {
     background: 'transparent',
-    border: '1px solid var(--border)',
-    color: 'var(--text-2)',
+    border: '1px solid var(--border-2)',
+    color: 'var(--text)',
     width: 36, height: 36,
     borderRadius: '50%',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -95,9 +95,9 @@ export default function Navigation() {
             ))}
 
             {/* Theme toggle */}
-            <button onClick={toggleTheme} style={iconBtn} title="Toggle theme"
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--gold)'; e.currentTarget.style.color = 'var(--gold)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-2)'; }}>
+            <button onClick={toggleTheme} style={{ ...iconBtn, color: 'var(--gold)' }} title="Toggle theme"
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--gold)'; e.currentTarget.style.background = 'var(--pill-bg)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border-2)'; e.currentTarget.style.background = 'transparent'; }}>
               {isDark ? <Sun size={14} /> : <Moon size={14} />}
             </button>
 
@@ -106,7 +106,7 @@ export default function Navigation() {
               onClick={() => setLocale(locale === 'en' ? 'ar' : 'en')}
               style={{ ...iconBtn, gap: 4, width: 'auto', padding: '0 12px', borderRadius: 20, fontSize: 10, fontWeight: 600, letterSpacing: '0.12em', fontFamily: "'Montserrat'" }}
               onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--gold)'; e.currentTarget.style.color = 'var(--gold)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-2)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border-2)'; e.currentTarget.style.color = 'var(--text)'; }}
             >
               <Globe size={11} />
               {locale === 'en' ? 'عربي' : 'EN'}
@@ -119,7 +119,7 @@ export default function Navigation() {
 
           {/* ── Mobile right controls ── */}
           <div className="mobile-only" style={{ display: 'flex', alignItems: 'center', gap: 10, flexDirection: isRTL ? 'row-reverse' : 'row' }}>
-            <button onClick={toggleTheme} style={iconBtn}>
+            <button onClick={toggleTheme} style={{ ...iconBtn, color: 'var(--gold)' }}>
               {isDark ? <Sun size={14} /> : <Moon size={14} />}
             </button>
             <button onClick={() => setOpen(!open)} style={{ ...iconBtn, borderColor: open ? 'var(--gold)' : 'var(--border)', color: open ? 'var(--gold)' : 'var(--text)' }}>
