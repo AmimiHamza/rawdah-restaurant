@@ -1,0 +1,198 @@
+export type Category = 'Starters' | 'Mains' | 'Desserts' | 'Dry Bar';
+
+export interface MenuItem {
+  id: string;
+  nameEn: string;
+  nameAr: string;
+  descEn: string;
+  descAr: string;
+  price: number;
+  calories: number;
+  category: Category;
+  allergens: string[];
+  image: string; // Unsplash URL
+  signature?: boolean;
+}
+
+export const menuItems: MenuItem[] = [
+  // ─── STARTERS ───
+  {
+    id: 's1',
+    nameEn: 'Smoked Hammour Tartare',
+    nameAr: 'تارتار الهامور المدخن',
+    descEn: 'Red Sea hammour, cold-smoked over oud chips, date vinaigrette, micro herbs, toasted sesame lavash.',
+    descAr: 'هامور البحر الأحمر مدخناً على رقائق العود، فينيغريت التمر، أعشاب دقيقة، لواش بالسمسم المحمص.',
+    price: 98,
+    calories: 210,
+    category: 'Starters',
+    allergens: ['Fish', 'Sesame', 'Gluten'],
+    image: 'https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?w=800&q=80',
+    signature: true,
+  },
+  {
+    id: 's2',
+    nameEn: 'Asiri Truffle Hummus',
+    nameAr: 'حمص الكمأ الأسيري',
+    descEn: 'Stone-ground chickpeas from Asir highlands, black truffle oil, crispy sumac shallots, Makkawi bread.',
+    descAr: 'حمص مطحون على الحجر من مرتفعات عسير، زيت الكمأ الأسود، بصل مقرمش بالسماق، خبز مكاوي.',
+    price: 72,
+    calories: 280,
+    category: 'Starters',
+    allergens: ['Sesame', 'Gluten'],
+    image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=800&q=80',
+  },
+  {
+    id: 's3',
+    nameEn: 'Wagyu Kibbeh Nayeh',
+    nameAr: 'كبة نيئة واغيو',
+    descEn: 'A5 Wagyu, bulgur from Al-Qassim, pine nuts, pomegranate molasses, mint oil.',
+    descAr: 'واغيو A5، برغل من القصيم، صنوبر، دبس رمان، زيت النعناع.',
+    price: 145,
+    calories: 320,
+    category: 'Starters',
+    allergens: ['Beef', 'Gluten', 'Tree Nuts'],
+    image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&q=80',
+    signature: true,
+  },
+  {
+    id: 's4',
+    nameEn: 'Saffron Bisque',
+    nameAr: 'شوربة الزعفران',
+    descEn: 'Qatif saffron, wild Red Sea shrimp, fennel cream, Hejazi spice dust.',
+    descAr: 'زعفران القطيف، روبيان برمي من البحر الأحمر، كريمة الشمر، توابل حجازية.',
+    price: 85,
+    calories: 190,
+    category: 'Starters',
+    allergens: ['Shellfish', 'Dairy'],
+    image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&q=80',
+  },
+  // ─── MAINS ───
+  {
+    id: 'm1',
+    nameEn: 'Slow-Braised Lamb Ouzi',
+    nameAr: 'أوزي الخروف المطهو ببطء',
+    descEn: '48-hour braised Najdi lamb, saffron basmati, date reduction jus, toasted almond gremolata.',
+    descAr: 'خروف نجدي مطهو ٤٨ ساعة، بسمتي بالزعفران، جوس تخفيض التمر، جريمولاتا باللوز المحمص.',
+    price: 285,
+    calories: 680,
+    category: 'Mains',
+    allergens: ['Dairy', 'Tree Nuts'],
+    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=80',
+    signature: true,
+  },
+  {
+    id: 'm2',
+    nameEn: 'A5 Wagyu Striploin',
+    nameAr: 'ستريبلوين واغيو A5',
+    descEn: 'Japanese A5 Wagyu, bone marrow butter, Haili black garlic jus, truffle-scented mashed potato.',
+    descAr: 'واغيو ياباني A5، زبدة نخاع العظم، جوس الثوم الأسود الهائلي، بطاطا مهروسة بالكمأ.',
+    price: 650,
+    calories: 820,
+    category: 'Mains',
+    allergens: ['Dairy', 'Beef'],
+    image: 'https://images.unsplash.com/photo-1558030006-450675393462?w=800&q=80',
+    signature: true,
+  },
+  {
+    id: 'm3',
+    nameEn: 'Coastal Hammour en Croûte',
+    nameAr: 'هامور ساحلي بالعجينة',
+    descEn: 'Wild-caught Red Sea hammour wrapped in phyllo, caper berry beurre blanc, sea herbs.',
+    descAr: 'هامور طازج من البحر الأحمر ملفوف بعجينة الفيلو، صلصة الزبدة البيضاء بالكبر، أعشاب بحرية.',
+    price: 220,
+    calories: 540,
+    category: 'Mains',
+    allergens: ['Fish', 'Gluten', 'Dairy'],
+    image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=800&q=80',
+  },
+  {
+    id: 'm4',
+    nameEn: 'Truffle Stuffed Chicken',
+    nameAr: 'دجاج محشو بالكمأ',
+    descEn: 'Free-range Taif chicken, black truffle under skin, Mushroom duxelles, jus gras.',
+    descAr: 'دجاج حر من الطائف، كمأة سوداء تحت الجلد، دوكسيل الفطر، جوس غراس.',
+    price: 195,
+    calories: 620,
+    category: 'Mains',
+    allergens: ['Dairy', 'Poultry'],
+    image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c3?w=800&q=80',
+  },
+  // ─── DESSERTS ───
+  {
+    id: 'd1',
+    nameEn: 'Medjool Date Soufflé',
+    nameAr: 'سوفليه تمر المجدول',
+    descEn: 'Al-Ahsa Medjool caramel soufflé, cardamom ice cream, Maldon sea salt.',
+    descAr: 'سوفليه كراميل المجدول الأحسائي، آيس كريم الهيل، ملح مالدون.',
+    price: 88,
+    calories: 410,
+    category: 'Desserts',
+    allergens: ['Dairy', 'Eggs', 'Gluten'],
+    image: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&q=80',
+    signature: true,
+  },
+  {
+    id: 'd2',
+    nameEn: 'Rose & Pistachio Verrine',
+    nameAr: 'فيرين الورد والفستق',
+    descEn: 'Damascus rose panna cotta, Haili pistachio praline, gold leaf, saffron gel.',
+    descAr: 'بانا كوتا بورد دمشق، براليني فستق الهائل، ورق ذهبي، جيل الزعفران.',
+    price: 75,
+    calories: 350,
+    category: 'Desserts',
+    allergens: ['Dairy', 'Tree Nuts'],
+    image: 'https://images.unsplash.com/photo-1488477304112-4944851de03d?w=800&q=80',
+  },
+  {
+    id: 'd3',
+    nameEn: 'Dark Chocolate Sphere',
+    nameAr: 'كرة الشوكولاتة الداكنة',
+    descEn: 'Valrhona 72% chocolate sphere, salted caramel molten centre, tahini tuile.',
+    descAr: 'كرة شوكولاتة فالرونا ٧٢٪، مركز كراميل مالح، تويل الطحينة.',
+    price: 82,
+    calories: 480,
+    category: 'Desserts',
+    allergens: ['Dairy', 'Gluten', 'Sesame'],
+    image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&q=80',
+  },
+  // ─── DRY BAR ───
+  {
+    id: 'b1',
+    nameEn: 'Saffron Blossom',
+    nameAr: 'زهرة الزعفران',
+    descEn: 'Qatif saffron, white peach purée, lemon verbena, sparkling grape, edible rose.',
+    descAr: 'زعفران القطيف، بيوريه الخوخ الأبيض، ليمون فيربينا، عنب فوار، ورد صالح للأكل.',
+    price: 55,
+    calories: 120,
+    category: 'Dry Bar',
+    allergens: [],
+    image: 'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=800&q=80',
+    signature: true,
+  },
+  {
+    id: 'b2',
+    nameEn: 'Arabian Nights Elixir',
+    nameAr: 'إكسير ليالي عربية',
+    descEn: 'Pomegranate, cardamom-spiced lemonade, rose water, fig shrub, smoked ice.',
+    descAr: 'رمان، ليمونادة بالهيل، ماء ورد، خل التين، ثلج مدخن.',
+    price: 48,
+    calories: 95,
+    category: 'Dry Bar',
+    allergens: [],
+    image: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=800&q=80',
+  },
+  {
+    id: 'b3',
+    nameEn: 'Cold Brew Oud',
+    nameAr: 'قهوة باردة بالعود',
+    descEn: 'Single-origin Yemeni cold brew, oud smoke infusion, date syrup, oat milk foam.',
+    descAr: 'تخمير بارد أصل واحد يمني، تدخين العود، شراب التمر، رغوة حليب الشوفان.',
+    price: 42,
+    calories: 80,
+    category: 'Dry Bar',
+    allergens: ['Oat'],
+    image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=800&q=80',
+  },
+];
+
+export const categoryKeys: Category[] = ['Starters', 'Mains', 'Desserts', 'Dry Bar'];
