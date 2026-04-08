@@ -89,7 +89,7 @@ const translations = {
       tagline:     'Fine Dining · Riyadh, Kingdom of Saudi Arabia',
       hours:       'Daily 12:00 – 15:00 | 19:00 – 00:00',
       address:     'King Fahd Road, Olaya District, Riyadh 12211',
-      phone:       '+966 11 XXX XXXX',
+      phone:       '+212 643 636 334',
       follow:      'Follow',
       rights:      '© 2025 Rawdah Restaurant. All rights reserved.',
       privacy:     'Privacy Policy',

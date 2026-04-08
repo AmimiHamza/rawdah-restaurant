@@ -193,7 +193,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div style={{ fontFamily: "'Montserrat'", fontSize: '11px', fontWeight: 600, color: '#F8F8F8' }}>
-                    {isRTL ? 'حمزة أميمي' : 'Hamza Amimi'}
+                    {isRTL ? 'حمزةعميمي' : 'Hamza Amimi'}
                   </div>
                   <div style={{ fontFamily: "'Montserrat'", fontSize: '10px', fontWeight: 300, color: 'rgba(248,248,248,0.4)' }}>
                     {isRTL ? 'مطور ومصمم مواقع' : 'Web Developer & Designer'}
