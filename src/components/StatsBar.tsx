@@ -3,13 +3,13 @@ import { useRef, useEffect, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useI18n } from '@/lib/i18n';
 
-interface Stat { valueEn: string; valueAr: string; labelEn: string; labelAr: string; num: number; suffix: string; }
+interface Stat { label: Record<string, string>; num: number; suffix: string; }
 
 const stats: Stat[] = [
-  { num: 40,  suffix: '+', valueEn: '40+',  valueAr: '+٤٠',  labelEn: 'Restaurants Served', labelAr: 'مطعم نخدمه' },
-  { num: 3,   suffix: '',  valueEn: '3',     valueAr: '٣',    labelEn: 'Countries',           labelAr: 'دول' },
-  { num: 98,  suffix: '%', valueEn: '98%',   valueAr: '٩٨٪',  labelEn: 'Client Satisfaction', labelAr: 'رضا العملاء' },
-  { num: 7,   suffix: 'd', valueEn: '7 days',valueAr: '٧ أيام',labelEn: 'Avg. Delivery',     labelAr: 'متوسط التسليم' },
+  { num: 40,  suffix: '+', label: { en: 'Restaurants Served', fr: 'Restaurants servis',    ar: 'مطعم نخدمه' } },
+  { num: 3,   suffix: '',  label: { en: 'Countries',           fr: 'Pays',                  ar: 'دول' } },
+  { num: 98,  suffix: '%', label: { en: 'Client Satisfaction', fr: 'Satisfaction client',   ar: 'رضا العملاء' } },
+  { num: 7,   suffix: 'd', label: { en: 'Avg. Delivery',       fr: 'Délai moyen',           ar: 'متوسط التسليم' } },
 ];
 
 function Counter({ num, suffix, active }: { num: number; suffix: string; active: boolean }) {
@@ -49,7 +49,7 @@ export default function StatsBar() {
                 <Counter num={s.num} suffix={s.suffix} active={inView} />
               </div>
               <div style={{ fontFamily: "'Montserrat'", fontSize: 10, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-3)' }}>
-                {locale === 'ar' ? s.labelAr : s.labelEn}
+                {s.label[locale] ?? s.label.en}
               </div>
             </motion.div>
           ))}

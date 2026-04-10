@@ -226,7 +226,7 @@ export default function HeroOwner() {
         style={{ position: 'absolute', bottom: 32, left: '50%', transform: 'translateX(-50%)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}
       >
         <span style={{ fontFamily: "'Montserrat'", fontSize: 9, fontWeight: 600, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--text-3)' }}>
-          {locale === 'ar' ? 'اكتشف' : 'Discover'}
+          {locale === 'ar' ? 'اكتشف' : locale === 'fr' ? 'Découvrir' : 'Discover'}
         </span>
         <motion.div animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.8 }}>
           <ChevronDown size={16} color="var(--gold)" />
