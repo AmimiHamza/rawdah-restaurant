@@ -39,11 +39,6 @@ const features: Feature[] = [
     desc:  { en: 'Date, time, party size selection. Private room suggestions and peak-hour deposit logic.', fr: "Sélection de date, heure et nombre de convives. Suggestions de salons privés et dépôt de garantie.", ar: 'اختيار التاريخ، الوقت، وعدد الضيوف. اقتراح غرف خاصة ومنطق عربون.' },
   },
   {
-    id: 'ordering', icon: '🛍', included: false,
-    title: { en: 'Online Ordering & Payment', fr: 'Commande en Ligne & Paiement', ar: 'طلب أونلاين ودفع إلكتروني' },
-    desc:  { en: 'Course-sequenced checkout (Starter → Main → Dessert) with Mada and Apple Pay.', fr: 'Commande séquentielle (Entrée → Plat → Dessert) avec Mada et Apple Pay.', ar: 'سلة منظمة بالترتيب (مقبلات ← رئيسي ← حلوى) مع مدى وآبل باي.' },
-  },
-  {
     id: 'dashboard', icon: '📊', included: false,
     title: { en: 'Smart Admin Dashboard', fr: 'Tableau de Bord Intelligent', ar: 'لوحة تحكم ذكية' },
     desc:  { en: 'Revenue charts, reservations, orders, and ratings — all real-time in your pocket.', fr: 'Graphiques de revenus, réservations, commandes et avis — tout en temps réel.', ar: 'مخططات الإيرادات، الحجوزات، الطلبات، والتقييمات — كل شيء في الوقت الفعلي.' },
