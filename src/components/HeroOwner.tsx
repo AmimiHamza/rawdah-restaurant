@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight, ChevronDown, Sparkles } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
 import { useTheme } from '@/lib/theme';
 
-const content = {
+const content: Record<string, { badge: string; title1: string; title2: string; title3: string; title4: string; sub: string; cta1: string; cta2: string; badge2: string }> = {
   en: {
     badge:    'Amimi Digital · Restaurants',
     title1:   'Your Restaurant',
@@ -15,6 +15,17 @@ const content = {
     cta1:     'Build My Website',
     cta2:     'See Dashboard',
     badge2:   '100% Custom · Bilingual EN/AR · Mobile-First',
+  },
+  fr: {
+    badge:    'Amimi Digital · Restaurants',
+    title1:   'Votre restaurant',
+    title2:   'mérite un site aussi',
+    title3:   'exceptionnel',
+    title4:   "que votre cuisine",
+    sub:      "Nous créons des sites restaurant bilingues à fort taux de conversion — avec tableaux de bord intelligents, réservations en ligne et paiements intégrés. En jours, pas en mois.",
+    cta1:     'Créer mon site',
+    cta2:     'Voir le tableau de bord',
+    badge2:   '100% Sur mesure · Bilingue FR/AR · Mobile-First',
   },
   ar: {
     badge:    'عميمي ديجيتال · المطاعم',
@@ -29,11 +40,16 @@ const content = {
   },
 };
 
-const floatingCards = {
+const floatingCards: Record<string, { icon: string; label: string; value: string }[]> = {
   en: [
     { icon: '📅', label: 'Reservations', value: '+147 this week' },
     { icon: '⭐', label: 'Rating',        value: '4.9 / 5.0' },
     { icon: '💰', label: 'Revenue',       value: '+23% this month' },
+  ],
+  fr: [
+    { icon: '📅', label: 'Réservations', value: '+147 cette semaine' },
+    { icon: '⭐', label: 'Note',          value: '4,9 / 5,0' },
+    { icon: '💰', label: 'Chiffre d\'aff.', value: '+23% ce mois' },
   ],
   ar: [
     { icon: '📅', label: 'الحجوزات',   value: '+١٤٧ هذا الأسبوع' },
