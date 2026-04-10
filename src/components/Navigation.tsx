@@ -1,8 +1,8 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Globe, Sun, Moon } from 'lucide-react';
-import { useI18n } from '@/lib/i18n';
+import { Menu, X, Globe, Sun, Moon, ChevronDown } from 'lucide-react';
+import { useI18n, Locale } from '@/lib/i18n';
 import { useTheme } from '@/lib/theme';
 
 const navLinks = [
@@ -13,8 +13,122 @@ const navLinks = [
 
 const navLabels = {
   en: { features: 'What You Get', dashboard: 'Dashboard', contact: 'Contact' },
+  fr: { features: 'Ce que vous obtenez', dashboard: 'Tableau de bord', contact: 'Contact' },
   ar: { features: 'ما ستحصل عليه', dashboard: 'لوحة التحكم', contact: 'تواصل معنا' },
 };
+
+const LANGS: { code: Locale; label: string; native: string; flag: string }[] = [
+  { code: 'en', label: 'English',  native: 'English',  flag: '🇬🇧' },
+  { code: 'fr', label: 'French',   native: 'Français', flag: '🇫🇷' },
+  { code: 'ar', label: 'Arabic',   native: 'العربية',  flag: '🇸🇦' },
+];
+
+function LangDropdown({ locale, setLocale, mobile = false }: {
+  locale: Locale;
+  setLocale: (l: Locale) => void;
+  mobile?: boolean;
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const current = LANGS.find(l => l.code === locale) || LANGS[0];
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  const select = (code: Locale) => { setLocale(code); setOpen(false); };
+
+  const itemStyle = (active: boolean): React.CSSProperties => ({
+    display: 'flex', alignItems: 'center', gap: 10,
+    width: '100%', padding: '10px 14px',
+    background: active ? 'rgba(212,175,55,0.1)' : 'transparent',
+    border: 'none', cursor: 'pointer',
+    fontFamily: "'Montserrat', sans-serif", fontSize: 11, fontWeight: 500,
+    color: active ? 'var(--gold)' : 'var(--text-2)',
+    letterSpacing: '0.04em',
+    transition: 'background 0.15s, color 0.15s',
+    textAlign: 'left',
+  });
+
+  if (mobile) {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+        <p style={{ fontFamily: "'Montserrat'", fontSize: 9, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-3)', paddingLeft: 14, marginBottom: 4 }}>Language</p>
+        {LANGS.map(l => (
+          <button key={l.code} onClick={() => select(l.code)} style={itemStyle(l.code === locale)}>
+            <span style={{ fontSize: 18 }}>{l.flag}</span>
+            <span style={{ flex: 1 }}>{l.native}</span>
+            {l.code === locale && <span style={{ color: 'var(--gold)', fontSize: 12 }}>✓</span>}
+          </button>
+        ))}
+      </div>
+    );
+  }
+
+  return (
+    <div ref={ref} style={{ position: 'relative' }}>
+      <button
+        onClick={() => setOpen(o => !o)}
+        style={{
+          display: 'flex', alignItems: 'center', gap: 5,
+          background: 'transparent',
+          border: '1px solid var(--border-2)',
+          color: 'var(--text)',
+          height: 36, padding: '0 12px', borderRadius: 20,
+          cursor: 'pointer',
+          fontFamily: "'Montserrat'", fontSize: 10, fontWeight: 600, letterSpacing: '0.12em',
+          transition: 'all 0.25s ease',
+        }}
+        onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--gold)'; e.currentTarget.style.color = 'var(--gold)'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border-2)'; e.currentTarget.style.color = 'var(--text)'; }}
+      >
+        <Globe size={11} />
+        <span>{current.flag} {current.code.toUpperCase()}</span>
+        <ChevronDown size={10} style={{ transition: 'transform 0.2s', transform: open ? 'rotate(180deg)' : 'none' }} />
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -6, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -6, scale: 0.96 }}
+            transition={{ duration: 0.15 }}
+            style={{
+              position: 'absolute', top: 'calc(100% + 8px)', right: 0,
+              width: 160, borderRadius: 12, overflow: 'hidden', zIndex: 999,
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border)',
+              boxShadow: 'var(--shadow)',
+            }}
+          >
+            {LANGS.map(l => (
+              <button
+                key={l.code}
+                onClick={() => select(l.code)}
+                style={itemStyle(l.code === locale)}
+                onMouseEnter={(e) => {
+                  if (l.code !== locale) { e.currentTarget.style.background = 'var(--pill-bg)'; e.currentTarget.style.color = 'var(--text)'; }
+                }}
+                onMouseLeave={(e) => {
+                  if (l.code !== locale) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--text-2)'; }
+                }}
+              >
+                <span style={{ fontSize: 16 }}>{l.flag}</span>
+                <span style={{ flex: 1 }}>{l.native}</span>
+                {l.code === locale && <span style={{ color: 'var(--gold)', fontSize: 12 }}>✓</span>}
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 export default function Navigation() {
   const { locale, setLocale, isRTL } = useI18n();
@@ -28,7 +142,6 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  // Close menu on resize to desktop
   useEffect(() => {
     const fn = () => { if (window.innerWidth >= 1025) setOpen(false); };
     window.addEventListener('resize', fn);
@@ -101,19 +214,11 @@ export default function Navigation() {
               {isDark ? <Sun size={14} /> : <Moon size={14} />}
             </button>
 
-            {/* Language toggle */}
-            <button
-              onClick={() => setLocale(locale === 'en' ? 'ar' : 'en')}
-              style={{ ...iconBtn, gap: 4, width: 'auto', padding: '0 12px', borderRadius: 20, fontSize: 10, fontWeight: 600, letterSpacing: '0.12em', fontFamily: "'Montserrat'" }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--gold)'; e.currentTarget.style.color = 'var(--gold)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border-2)'; e.currentTarget.style.color = 'var(--text)'; }}
-            >
-              <Globe size={11} />
-              {locale === 'en' ? 'عربي' : 'EN'}
-            </button>
+            {/* Language dropdown */}
+            <LangDropdown locale={locale} setLocale={setLocale} />
 
             <button onClick={() => scrollTo('#contact')} className="btn-gold-solid" style={{ fontSize: 10, padding: '10px 22px', letterSpacing: '0.15em' }}>
-              {locale === 'en' ? 'Start Now' : 'ابدأ الآن'}
+              {locale === 'ar' ? 'ابدأ الآن' : locale === 'fr' ? 'Commencer' : 'Start Now'}
             </button>
           </div>
 
@@ -133,13 +238,11 @@ export default function Navigation() {
       <AnimatePresence>
         {open && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               onClick={() => setOpen(false)}
               style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 850, backdropFilter: 'blur(4px)' }}
             />
-            {/* Drawer */}
             <motion.div
               initial={{ opacity: 0, y: -16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -167,16 +270,15 @@ export default function Navigation() {
                     {labels[key]}
                   </motion.button>
                 ))}
-                <div style={{ display: 'flex', gap: 12, marginTop: 20, flexDirection: isRTL ? 'row-reverse' : 'row', flexWrap: 'wrap' }}>
-                  <button
-                    onClick={() => { setLocale(locale === 'en' ? 'ar' : 'en'); setOpen(false); }}
-                    className="btn-gold"
-                    style={{ fontSize: 10, padding: '10px 20px' }}
-                  >
-                    <Globe size={11} /> {locale === 'en' ? 'العربية' : 'English'}
-                  </button>
-                  <button onClick={() => scrollTo('#contact')} className="btn-gold-solid" style={{ fontSize: 10, padding: '10px 20px', flex: 1, justifyContent: 'center' }}>
-                    {locale === 'en' ? 'Start Now' : 'ابدأ الآن'}
+
+                {/* Language picker in mobile drawer */}
+                <div style={{ marginTop: 20 }}>
+                  <LangDropdown locale={locale} setLocale={(l) => { setLocale(l); setOpen(false); }} mobile />
+                </div>
+
+                <div style={{ marginTop: 16 }}>
+                  <button onClick={() => scrollTo('#contact')} className="btn-gold-solid" style={{ fontSize: 10, padding: '12px 20px', width: '100%', justifyContent: 'center' }}>
+                    {locale === 'ar' ? 'ابدأ الآن' : locale === 'fr' ? 'Commencer' : 'Start Now'}
                   </button>
                 </div>
               </div>

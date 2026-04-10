@@ -4,9 +4,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useI18n, Locale } from '@/lib/i18n';
 
 const options: { locale: Locale; label: string; native: string; flag: string; dir: 'ltr' | 'rtl' }[] = [
-  { locale: 'ar', label: 'Arabic',   native: 'العربية',  flag: '🇸🇦', dir: 'rtl' },
   { locale: 'en', label: 'English',  native: 'English',  flag: '🇬🇧', dir: 'ltr' },
   { locale: 'fr', label: 'French',   native: 'Français', flag: '🇫🇷', dir: 'ltr' },
+  { locale: 'ar', label: 'Arabic',   native: 'العربية',  flag: '🇸🇦', dir: 'rtl' },
 ];
 
 export default function LanguagePicker() {
