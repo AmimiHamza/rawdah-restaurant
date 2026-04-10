@@ -14,7 +14,7 @@ const content: Record<string, { badge: string; title1: string; title2: string; t
     sub:      '$0 upfront. We build your luxury restaurant website — smart dashboard, reservations, payments — for a simple monthly subscription. Go live in days, not months.',
     cta1:     'Start for $0 Today',
     cta2:     'See Dashboard',
-    badge2:   '$0 Setup · $79/month · Cancel Anytime',
+    badge2:   '$0 Setup · No Lock-in · 100% Custom',
   },
   fr: {
     badge:    'Amimi Digital · Restaurants',
@@ -25,7 +25,7 @@ const content: Record<string, { badge: string; title1: string; title2: string; t
     sub:      "0 £ de création. Nous construisons votre site restaurant de luxe — tableau de bord, réservations, paiements — pour un abonnement mensuel simple. En ligne en quelques jours.",
     cta1:     'Commencer à 0 £',
     cta2:     'Voir le tableau de bord',
-    badge2:   '0 £ création · 79 £/mois · Résiliation libre',
+    badge2:   '0 £ création · Sans engagement · 100% Sur mesure',
   },
   ar: {
     badge:    'عميمي ديجيتال · المطاعم',
@@ -36,7 +36,7 @@ const content: Record<string, { badge: string; title1: string; title2: string; t
     sub:      '٠ ريال رسوم تأسيس. نبني موقعك الفاخر — لوحة تحكم، حجوزات، دفع إلكتروني — مقابل اشتراك شهري بسيط. تنطلق خلال أيام وليس أشهراً.',
     cta1:     'ابدأ بـ ٠ ريال اليوم',
     cta2:     'شاهد لوحة التحكم',
-    badge2:   '٠ ريال تأسيس · ٢٩٩ ر.س/شهر · إلغاء في أي وقت',
+    badge2:   '٠ ريال تأسيس · بدون التزامات · ١٠٠٪ مخصص',
   },
 };
 
