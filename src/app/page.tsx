@@ -1,6 +1,7 @@
 import Navigation      from '@/components/Navigation';
 import HeroOwner       from '@/components/HeroOwner';
 import StatsBar        from '@/components/StatsBar';
+import WaaSSection     from '@/components/WaaSSection';
 import WhatYouGet      from '@/components/WhatYouGet';
 import DashboardPreview from '@/components/DashboardPreview';
 import Contact         from '@/components/Contact';
@@ -17,6 +18,7 @@ export default function Home() {
       <main>
         <HeroOwner />
         <StatsBar />
+        <WaaSSection />
         <WhatYouGet />
         <DashboardPreview />
         <Contact />

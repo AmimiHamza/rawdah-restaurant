@@ -107,6 +107,7 @@ const ui = {
 export default function WhatYouGet() {
   const { isRTL, locale } = useI18n();
   const [selected, setSelected] = useState<Set<string>>(new Set(features.filter(f => f.included).map(f => f.id)));
+  const [pricingTooltip, setPricingTooltip] = useState(false);
 
   const toggle = (id: string) => {
     const f = features.find(f => f.id === id)!;
@@ -230,6 +231,47 @@ export default function WhatYouGet() {
                   ))}
                 </AnimatePresence>
               </div>
+              {/* Pricing mini-block */}
+              <div style={{ padding: '14px 24px', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8, flexDirection: isRTL ? 'row-reverse' : 'row' }}>
+                  <span style={{ fontFamily: "'Montserrat'", fontSize: 9, fontWeight: 600, color: 'var(--text-3)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+                    {locale === 'ar' ? 'رسوم التأسيس' : locale === 'fr' ? 'Frais de création' : 'Setup Fee'}
+                  </span>
+                  <span style={{ fontFamily: "'Cormorant Garamond'", fontSize: 18, fontWeight: 400, color: 'var(--gold)' }}>
+                    {locale === 'ar' ? '٠ ر.س' : '0'}
+                  </span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexDirection: isRTL ? 'row-reverse' : 'row' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 5, flexDirection: isRTL ? 'row-reverse' : 'row' }}>
+                    <span style={{ fontFamily: "'Montserrat'", fontSize: 9, fontWeight: 600, color: 'var(--text-3)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+                      {locale === 'ar' ? 'الاشتراك الشهري' : locale === 'fr' ? 'Abonnement mensuel' : 'Monthly Investment'}
+                    </span>
+                    <div style={{ position: 'relative' }}>
+                      <button
+                        onMouseEnter={() => setPricingTooltip(true)}
+                        onMouseLeave={() => setPricingTooltip(false)}
+                        style={{ width: 13, height: 13, borderRadius: '50%', border: '1px solid var(--border)', background: 'var(--bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', fontFamily: "'Montserrat'", fontSize: 8, color: 'var(--text-3)', lineHeight: 1 }}
+                      >
+                        i
+                      </button>
+                      {pricingTooltip && (
+                        <div style={{
+                          position: 'absolute', bottom: '120%', left: '50%', transform: 'translateX(-50%)',
+                          background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: 8, padding: '8px 12px',
+                          width: 200, fontFamily: "'Montserrat'", fontSize: 10, color: 'var(--text-2)', lineHeight: 1.65,
+                          textAlign: isRTL ? 'right' : 'left', zIndex: 10, boxShadow: '0 8px 24px rgba(0,0,0,0.15)', whiteSpace: 'normal',
+                        }}>
+                          {locale === 'ar' ? 'يشمل استضافة Vercel، شهادة SSL، والدعم التقني المستمر' : locale === 'fr' ? "Inclut l'hébergement Vercel, le SSL et le support continu" : 'Includes Vercel hosting, SSL, and ongoing technical support'}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <span style={{ fontFamily: "'Cormorant Garamond'", fontSize: 16, fontWeight: 400, color: 'var(--text)' }}>
+                    {locale === 'ar' ? '٢٩٩ ر.س/شهر' : locale === 'fr' ? '79 £/mois' : '$79/mo'}
+                  </span>
+                </div>
+              </div>
+
               <div style={{ padding: '16px 24px 24px' }}>
                 <button
                   onClick={() => { const ids = Array.from(selected).join(','); window.location.href = `/preview?f=${ids}`; }}

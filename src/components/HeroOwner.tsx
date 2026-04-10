@@ -11,10 +11,10 @@ const content: Record<string, { badge: string; title1: string; title2: string; t
     title2:   'Deserves a Website as',
     title3:   'Exceptional',
     title4:   'as Your Cuisine',
-    sub:      'We craft high-conversion, bilingual restaurant websites — complete with smart dashboards, online reservations, and seamless payments. All in days, not months.',
-    cta1:     'Build My Website',
+    sub:      '$0 upfront. We build your luxury restaurant website — smart dashboard, reservations, payments — for a simple monthly subscription. Go live in days, not months.',
+    cta1:     'Start for $0 Today',
     cta2:     'See Dashboard',
-    badge2:   '100% Custom · Bilingual EN/AR · Mobile-First',
+    badge2:   '$0 Setup · $79/month · Cancel Anytime',
   },
   fr: {
     badge:    'Amimi Digital · Restaurants',
@@ -22,10 +22,10 @@ const content: Record<string, { badge: string; title1: string; title2: string; t
     title2:   'mérite un site aussi',
     title3:   'exceptionnel',
     title4:   "que votre cuisine",
-    sub:      "Nous créons des sites restaurant bilingues à fort taux de conversion — avec tableaux de bord intelligents, réservations en ligne et paiements intégrés. En jours, pas en mois.",
-    cta1:     'Créer mon site',
+    sub:      "0 £ de création. Nous construisons votre site restaurant de luxe — tableau de bord, réservations, paiements — pour un abonnement mensuel simple. En ligne en quelques jours.",
+    cta1:     'Commencer à 0 £',
     cta2:     'Voir le tableau de bord',
-    badge2:   '100% Sur mesure · Bilingue FR/AR · Mobile-First',
+    badge2:   '0 £ création · 79 £/mois · Résiliation libre',
   },
   ar: {
     badge:    'عميمي ديجيتال · المطاعم',
@@ -33,10 +33,10 @@ const content: Record<string, { badge: string; title1: string; title2: string; t
     title2:   'موقعاً استثنائياً',
     title3:   'بمستوى',
     title4:   'مطبخك الراقي',
-    sub:      'نصمم مواقع مطاعم ثنائية اللغة عالية التحويل — مع لوحات تحكم ذكية، وحجوزات أونلاين، ودفع إلكتروني سلس. كل ذلك خلال أيام وليس أشهراً.',
-    cta1:     'ابنِ موقع مطعمي',
+    sub:      '٠ ريال رسوم تأسيس. نبني موقعك الفاخر — لوحة تحكم، حجوزات، دفع إلكتروني — مقابل اشتراك شهري بسيط. تنطلق خلال أيام وليس أشهراً.',
+    cta1:     'ابدأ بـ ٠ ريال اليوم',
     cta2:     'شاهد لوحة التحكم',
-    badge2:   '١٠٠٪ مخصص · ثنائي اللغة · متوافق مع الجوال',
+    badge2:   '٠ ريال تأسيس · ٢٩٩ ر.س/شهر · إلغاء في أي وقت',
   },
 };
 
@@ -168,7 +168,7 @@ export default function HeroOwner() {
               transition={{ duration: 0.7, delay: 0.75 }}
               style={{ display: 'flex', gap: 14, flexWrap: 'wrap', flexDirection: isRTL ? 'row-reverse' : 'row' }}
             >
-              <button onClick={() => scrollTo('#contact')} className="btn-gold-solid" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+              <button onClick={() => scrollTo('#waas')} className="btn-gold-solid" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
                 {c.cta1} <Arrow size={14} />
               </button>
               <button onClick={() => scrollTo('#dashboard')} className="btn-gold" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>

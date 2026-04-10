@@ -5,7 +5,7 @@ import { useI18n } from '@/lib/i18n';
 
 const ui = {
   en: {
-    tagline: 'Building luxury restaurant websites for clients worldwide.',
+    tagline: 'Building luxury restaurant websites worldwide · Managed by Experts · Monthly Subscription',
     navigate: 'Navigate',
     contact: 'Contact',
     coverage: 'Worldwide',
@@ -18,7 +18,7 @@ const ui = {
     terms: 'Terms',
   },
   fr: {
-    tagline: 'Nous créons des sites restaurant de luxe pour des clients partout dans le monde.',
+    tagline: 'Sites restaurant de luxe · Gérés par des Experts · Abonnement Mensuel',
     navigate: 'Navigation',
     contact: 'Contact',
     coverage: 'Monde entier',
@@ -31,7 +31,7 @@ const ui = {
     terms: "Conditions",
   },
   ar: {
-    tagline: 'نبني مواقع المطاعم الراقية لعملاء حول العالم.',
+    tagline: 'مواقع مطاعم راقية حول العالم · مُدارة من قِبل خبراء · اشتراك شهري',
     navigate: 'الأقسام',
     contact: 'تواصل',
     coverage: 'حول العالم',
