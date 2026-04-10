@@ -6,7 +6,7 @@ import LanguagePicker from "@/components/LanguagePicker";
 
 export const metadata: Metadata = {
   title: "Amimi Digital | عميمي ديجيتال — Restaurant Websites That Convert",
-  description: "We build luxury, bilingual restaurant websites with smart dashboards, online reservations, and seamless payments. Serving Saudi Arabia & GCC.",
+  description: "We build luxury, bilingual restaurant websites with smart dashboards, online reservations, and seamless payments. Serving clients worldwide.",
   keywords: ["restaurant website design", "luxury restaurant website", "Saudi restaurant website", "موقع مطعم احترافي", "تصميم مواقع مطاعم"],
   openGraph: {
     title: "Amimi Digital — Restaurant Websites That Convert",
@@ -22,7 +22,7 @@ const schemaOrg = {
   "@type": "ProfessionalService",
   name: "Amimi Digital",
   alternateName: "عميمي ديجيتال",
-  description: "Luxury restaurant website design and development agency serving Saudi Arabia and GCC.",
+  description: "Luxury restaurant website design and development agency serving clients worldwide.",
   url: "https://amimi.digital",
   areaServed: ["SA", "AE", "QA", "KW", "BH", "OM"],
   serviceType: "Web Design & Development",

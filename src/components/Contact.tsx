@@ -38,17 +38,17 @@ const infoCards: Record<string, { icon: React.ReactNode; label: string; value: s
   en: [
     { icon: <Mail size={18} />, label: 'Email', value: 'hamza.amimi.p@gmail.com' },
     { icon: <Clock size={18} />, label: 'Response Time', value: 'Within 24 hours' },
-    { icon: <Globe size={18} />, label: 'We serve', value: 'Saudi Arabia & GCC' },
+    { icon: <Globe size={18} />, label: 'We serve', value: 'Worldwide' },
   ],
   fr: [
     { icon: <Mail size={18} />, label: 'E-mail', value: 'hamza.amimi.p@gmail.com' },
     { icon: <Clock size={18} />, label: 'Délai de réponse', value: 'Sous 24 heures' },
-    { icon: <Globe size={18} />, label: 'Zones servies', value: 'Arabie Saoudite & Golfe' },
+    { icon: <Globe size={18} />, label: 'Zones servies', value: 'Monde entier' },
   ],
   ar: [
     { icon: <Mail size={18} />, label: 'البريد', value: 'hamza.amimi.p@gmail.com' },
     { icon: <Clock size={18} />, label: 'وقت الرد', value: 'خلال ٢٤ ساعة' },
-    { icon: <Globe size={18} />, label: 'نخدم', value: 'السعودية والخليج' },
+    { icon: <Globe size={18} />, label: 'نخدم', value: 'حول العالم' },
   ],
 };
 

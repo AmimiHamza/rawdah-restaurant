@@ -5,10 +5,10 @@ import { useI18n } from '@/lib/i18n';
 
 const ui = {
   en: {
-    tagline: 'Building luxury restaurant websites across Saudi Arabia & GCC.',
+    tagline: 'Building luxury restaurant websites for clients worldwide.',
     navigate: 'Navigate',
     contact: 'Contact',
-    coverage: 'Saudi Arabia & GCC',
+    coverage: 'Worldwide',
     newsletter: 'Newsletter',
     newsletterSub: 'Tips and best practices for your restaurant online.',
     emailPh: 'your@email.com',
@@ -18,10 +18,10 @@ const ui = {
     terms: 'Terms',
   },
   fr: {
-    tagline: 'Nous créons des sites restaurant de luxe en Arabie Saoudite & dans le Golfe.',
+    tagline: 'Nous créons des sites restaurant de luxe pour des clients partout dans le monde.',
     navigate: 'Navigation',
     contact: 'Contact',
-    coverage: 'Arabie Saoudite & Golfe',
+    coverage: 'Monde entier',
     newsletter: 'Newsletter',
     newsletterSub: 'Conseils et meilleures pratiques pour votre restaurant en ligne.',
     emailPh: 'votre@email.com',
@@ -31,10 +31,10 @@ const ui = {
     terms: "Conditions",
   },
   ar: {
-    tagline: 'نبني مواقع المطاعم الراقية في السعودية والخليج.',
+    tagline: 'نبني مواقع المطاعم الراقية لعملاء حول العالم.',
     navigate: 'الأقسام',
     contact: 'تواصل',
-    coverage: 'المملكة العربية السعودية والخليج',
+    coverage: 'حول العالم',
     newsletter: 'النشرة البريدية',
     newsletterSub: 'نصائح وأفضل الممارسات لمطعمك رقمياً.',
     emailPh: 'بريدك الإلكتروني',
