@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { I18nProvider } from "@/lib/i18n";
 import { ThemeProvider } from "@/lib/theme";
+import LanguagePicker from "@/components/LanguagePicker";
 
 export const metadata: Metadata = {
   title: "Amimi Digital | عميمي ديجيتال — Restaurant Websites That Convert",
@@ -40,7 +41,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <ThemeProvider>
-          <I18nProvider>{children}</I18nProvider>
+          <I18nProvider>
+            <LanguagePicker />
+            {children}
+          </I18nProvider>
         </ThemeProvider>
       </body>
     </html>
