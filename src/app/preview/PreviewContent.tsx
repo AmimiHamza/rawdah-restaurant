@@ -358,7 +358,7 @@ const featureInfos: FeatureInfo[] = [
   {
     id: 'ordering', icon: '🛍',
     en: { title: 'Online Ordering & Payment', desc: 'Course-sequenced checkout — Starters, Mains, Desserts — with Mada, Apple Pay, and credit card support built in.', bullets: ['Guided flow: Starter → Main → Dessert', 'Real-time cart with item customization', 'Mada, Apple Pay, and credit/debit card', 'Estimated delivery time (45–60 min)', 'Order confirmation via WhatsApp'] },
-    ar: { title: 'طلب أونلاين ودفع إلكتروني', desc: 'طلب منظم بالترتيب — مقبلات ثم رئيسية ثم حلويات — مع مدى، آبل باي، والبطاقات البنكية.', bullets: ['تدفق إرشادي: مقبلات ← رئيسي ← حلوى', 'سلة آنية مع خيارات التخصيص', 'مدى، آبل باي، وبطاقات ائتمانية/مدين', 'وقت التوصيل المقدر (٤٥–٦٠ دقيقة)', 'تأكيد الطلب والمتابعة عبر واتساب'] },
+    ar: { title: 'طلب أونلاين ودفع إلكتروني', desc: 'طلب منظم بالترتيب — مقبلات ثم رئيسية ثم حلويات — مع مدى، آبل باي، والبطاقات البنكية.', bullets: ['تدفق إرشادي: مقبلات ← رئيسي ← حلوى', 'سلة آنية مع خيارات التخصيص', 'مدى، آبل باي، وبطاقات ائتمانية/مدين', 'وقت التوصيل المقدر (45–60 دقيقة)', 'تأكيد الطلب والمتابعة عبر واتساب'] },
   },
   {
     id: 'dashboard', icon: '📊',

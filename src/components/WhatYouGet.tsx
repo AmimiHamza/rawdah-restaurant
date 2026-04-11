@@ -231,7 +231,7 @@ export default function WhatYouGet() {
                   {locale === 'ar' ? 'رسوم التأسيس' : locale === 'fr' ? 'Frais de création' : 'Setup Fee'}
                 </span>
                 <span style={{ fontFamily: "'Cormorant Garamond'", fontSize: 22, fontWeight: 400, color: 'var(--gold)' }}>
-                  {locale === 'ar' ? '٠ ر.س' : '0'}
+                  {locale === 'ar' ? '0 ر.س' : '0'}
                 </span>
               </div>
 

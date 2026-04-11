@@ -44,7 +44,7 @@ const infoCards: Record<string, { icon: React.ReactNode; label: string; value: s
   ],
   ar: [
     { icon: <Mail size={18} />, label: 'البريد', value: 'hamza.amimi.p@gmail.com' },
-    { icon: <Clock size={18} />, label: 'وقت الرد', value: 'خلال ٢٤ ساعة' },
+    { icon: <Clock size={18} />, label: 'وقت الرد', value: 'خلال 24 ساعة' },
     { icon: <Globe size={18} />, label: 'نخدم', value: 'حول العالم' },
   ],
 };
@@ -78,7 +78,7 @@ const contactUi: Record<string, {
   ar: {
     eyebrow: 'ابدأ مشروعك', heading: 'اطلب خدمتك الآن',
     quote: '"نبني تجارب رقمية تحكي قصصاً حقيقية."',
-    sent: 'تم الإرسال', sentSub: 'سنتواصل معك خلال ٢٤ ساعة.', sendAnother: 'رسالة جديدة',
+    sent: 'تم الإرسال', sentSub: 'سنتواصل معك خلال 24 ساعة.', sendAnother: 'رسالة جديدة',
     nameLbl: 'اسمك الكريم', namePh: 'اسمك الكريم',
     emailLbl: 'بريدك الإلكتروني', emailPh: 'بريدك الإلكتروني',
     serviceLbl: 'نوع الخدمة', servicePh: 'نوع الخدمة',
